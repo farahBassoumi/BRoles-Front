@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+
+    <link
+      rel="stylesheet"
+      href="C:\Users\FARAH\OneDrive\Bureau\based roles\BRoles\src\app\dashboard\dashboard.component.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Login</a>
+        <ng-container *ngIf="Role === 'Admin'">
+          <a class="navbar-brand" routerLink="/adduser">Add user</a>
+        </ng-container>
+        <div>
+          <h4>Welcome {{ Username }}</h4>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5">
+      <h2>you are {{ Role }} !</h2>
+      <br />
+
+     
+
+
+       <!--
+         <div class="filter-users">
+          <input
+            type="text"
+            class="form-control"
+            id="search-user"
+            aria-describedby="search-user"
+            [(ngModel)]="filterText"
+            placeholder="search by user"
+            autofocus
+            (ngModelChange)="filterUserByUsername($event)"
+          />
+          <button (click)="filterUserByUsername(filterText)" >search</button>
+        </div>-->
+        <br>
+
+        <table class="table" *ngIf="users && users.length > 0">
+          <tr>
+            <th>Role</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Salary</th>
+
+            <ng-container *ngIf="isRoleAdmin()">
+              <th>reset password</th>
+              <th>Desactiver/activer</th>
+            </ng-container>
+          </tr>
+
+          <tbody>
+            <tr *ngFor="let user of users "
+           
+            >
+              <td>{{ user.role }}</td>
+              <td >{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.salary }}</td>
+
+              <ng-container *ngIf="Role === 'Admin'">
+                <div class="forgot">
+                  <div class="form-inline fr mt-4">
+                    <a
+
+                    
+                     (click)="setEmail(user.email)"
+
+
+                      id="forgot"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                      class="font-weight-bold"
+                      >reset password?</a
+                    >
+                  </div>
+                </div>
+
+                <ng-container *ngIf="user.role === 'User'">
+                  <ng-container *ngIf="!user.desactivated">
+                    <td>
+                      <button
+                        (click)="activatdDesactivate(user.email)"
+                        class="btn btn-danger"
+                      >
+                        desactiver
+                      </button>
+                    </td>
+                  </ng-container>
+
+                  <ng-container *ngIf="user.desactivated">
+                    <td>
+                      <button
+                        (click)="activatdDesactivate(user.email)"
+                        class="btn btn-warning"
+                      >
+                        activate
+                      </button>
+                    </td>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+
+              <ng-container *ngIf="Role !== 'Admin'">
+                <td></td>
+                <td></td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+     
+
+      <br />
+
+      <button class="btn btn-danger" (click)="logout()">LOGOUT</button>
+
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <p *ngIf="!users || users.length == 0">No users Found!</p>
+    </div>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title" id="exampleModalLabel">
+              <span style="font-size: 25px; font-weight: 780"
+                >Reset this user's password?</span
+              ><br />
+              <small
+                >Please confirm the email we will be be sending the reset link
+                to</small
+              >
+            </p>
+
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              (click)="close()"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="form-group pt-3">
+              <div class="input-field">
+                <input type="text" [(ngModel)]="resetPasswordEmail" />
+              </div>
+            </div>
+
+            <small *ngIf="!resetPasswordEmail" class="text-danger"
+              >*Email is required*</small
+            >
+
+            <small
+              *ngIf="!checkValidEmail(resetPasswordEmail) && resetPasswordEmail"
+              class="text-danger"
+              >*Email is innvalid*</small
+            >
+          </div>
+
+          <div class="modal-footer">
+            <button
+              id="BtnClose"
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+
+            <button
+              (click)="resetPassword()"
+              type="button"
+              class="btn btn-primary"
+            >
+              confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

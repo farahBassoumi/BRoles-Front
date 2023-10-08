@@ -1,0 +1,31 @@
+body{
+   
+    background: url(src/assets/login3.jpg);
+    background-size: cover;
+    background-position: center;
+  
+
+
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    height: 100vh; /* Ensure the container takes the full viewport height */
+    margin: 0;
+  }
+  .container{
+width:1000px;
+height:700px;
+    background: rgba(189, 40, 40, 0.1);
+    box-shadow: 0 0.5rem 2rem 0 rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(0.55rem);
+
+  }
+  .container h3{
+color:red;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    height: 100vh; /* Ensure the container takes the full viewport height */
+    margin: 0;
+    cursor: default;
+      }

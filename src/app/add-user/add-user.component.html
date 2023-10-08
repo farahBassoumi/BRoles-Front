@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Animated Login Form</title>
+    <link
+      rel="stylesheet"
+      href="C:\Users\FARAH\OneDrive\Bureau\based roles\BRoles\src\app\add-user\add-user.component.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <header>Add user</header>
+      <form>
+        <div class="input-field">
+          <input
+            type="text"
+            name="Username"
+            [(ngModel)]="addUserRequest.Username"
+          
+            required
+          />
+          <label>Username</label>
+        </div>
+
+        <div class="form-group pt-3">
+          <div class="input-field">
+            <input
+              type="email"
+              name="Email"
+              [(ngModel)]="addUserRequest.Email"
+              required
+              unique
+            />
+            <label>Email</label>
+          </div>
+        </div>
+
+        <div class="form-group pt-3">
+            <div class="input-field">
+          <input
+            type="text"
+            name="Password"
+            [(ngModel)]="addUserRequest.Password"
+            required
+          />
+            
+          <span class="fa fa-eye-slash"> </span>
+          <label>Password</label>
+        </div>
+        </div>
+<br>
+        <div class="button">
+          <div class="inner"></div>
+          <button
+            type="submit"
+            value="Submit"
+            class="submit"
+            (click)="addUser()"
+          >
+            add user
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

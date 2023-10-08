@@ -1,0 +1,26 @@
+body{
+   
+    background: url(src/assets/login3.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .table{
+
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0.5rem 2rem 0 rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(0.75rem);
+
+  }
+  .container-fluid{
+    background-color: rgba(176, 194, 212, 0.712);
+  }
+
+
+  .container-fluid a{
+   color: rgb(36, 48, 66);
+   font-weight: bold;
+  }
+  .forgot a:hover{
+cursor:pointer;
+
+  }
